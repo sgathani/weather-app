@@ -1,0 +1,144 @@
+$darkest-gray-color: #202020;
+$dark-gray-color: #585858;
+$light-gray-color: #C8C8C8;
+$footer-color: #D0D0D0;
+$tab-height: 70px;
+
+@mixin text-alignment($color) {
+  align-items: center;
+  color: $color;
+  display: flex;
+  justify-content: flex-start;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: larger;
+}
+
+.text-alignment {
+  align-items: center;
+  color: $light-gray-color;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#breadcrumbs {
+  @extend .text-alignment;
+  background-color: $darkest-gray-color;
+  height: $tab-height;
+}
+
+#app-view-header {
+  @extend .text-alignment;
+  background-color: $darkest-gray-color;
+  color: white;
+  height: $tab-height;
+  .route-text:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.float-left {
+    float: left;
+}
+
+.black {
+    background-color: black;
+}
+
+.gray {
+    background-color: $dark-gray-color;
+}
+
+.lightgray {
+    color: $light-gray-color;
+}
+
+.routetext {
+    color: $darkest-gray-color;
+}
+
+.tab {
+  @extend .text-alignment;
+  height: $tab-height;
+  width: 100%;
+}
+
+.clickable-tab {
+    @extend .tab;
+    background-color: $darkest-gray-color;
+    border-bottom: 1px solid $dark-gray-color;
+    .tab-text {
+      color: $light-gray-color;
+      left: 10px;
+      transition: all 1s;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: $darkest-gray-color;
+      .tab-text {
+        transform: translateX(60%);
+        left: 55%;
+      }
+    }
+}
+
+.lhp {
+  background-color: $dark-gray-color;
+  color: $light-gray-color;
+  display: flex;
+  flex-direction: column;
+  float: left;
+  height:100%;
+  width: 30%;
+}
+
+.home-text {
+  @extend .text-alignment;
+}
+
+#app-view-footer {
+  align-items: center;
+  border-top: 2px solid $footer-color;
+  color: $footer-color;
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  justify-content: flex-end;
+}
+
+#weather-container {
+  color: $darkest-gray-color;
+  #prompt {
+    font-size: x-large;
+    font-weight: bold;
+  }
+  .weather-row {
+    clear: both;
+    min-height: 40px;
+    width: 240px;
+    .input-title {
+      float: left;
+      width: 33%;
+    }
+    .input-value {
+      float: left;
+      width: 65%;
+    }
+    button {
+      float: right;
+    }
+  }
+}
+
+
+

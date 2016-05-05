@@ -1,15 +1,15 @@
-angular.module('healthyGulpAngularApp', ['ui.router'])
-
-.config(['$stateProvider', '$urlRouterProvider',
+angular.module('weatherApp', ['ui.router'])
+  .config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
-
-        $urlRouterProvider.otherwise('/');
-
+        $urlRouterProvider.otherwise("/home");
         $stateProvider
-
             .state('home', {
-                url: '/',
-                templateUrl: 'components/home.html'
+                url: '/home',
+                templateUrl: 'components/home/home.html'
+            })
+            .state('weather', {
+                url: '/weather',
+                templateUrl: 'components/weather/weather.html',
+                controller: 'weatherCtrl'
             });
-
     }]);

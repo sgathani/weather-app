@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="healthyGulpAngularApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="healthyGulpAngularApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="healthyGulpAngularApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="healthyGulpAngularApp" class="no-js"> <!--<![endif]-->
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,12 +10,25 @@
     <!-- endinject -->
     <!-- inject:css -->
     <!-- endinject -->
+  <meta charset="UTF-8">
+  <title>Title</title>
 </head>
-<body>
-<!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
-<div ui-view></div>
+<body ng-app="weatherApp">
+<div class="full-height full-width" style="top:0px; bottom:0px; position:absolute;">
+  <div id="breadcrumbs" class="full-width" style="height:10%;">
+    Adobe Marketing Cloud / Home
+  </div>
+  <div id="app-container" class="full-width" style="height:90%;">
+    <left-hand-pane></left-hand-pane>
+    <div id="app-rhp" class="full-height float-left" style="width: 69%;">
+      <content-header></content-header>
+      <div id="app-view-container" class="full-width gray-border" style="height:80%;" ui-view></div>
+      <div id="app-view-footer" class="full-width gray-border" style="height:10%;">
+        <h3>This is the view footer</h3>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- bower:js -->
 <!-- endinject -->
 <!-- inject:js -->
