@@ -3,9 +3,15 @@
     return {
       restrict: 'E',
       templateUrl: 'components/content-header/content-header.html',
-      scope: {},
+      scope: {
+        hideLhp: '='
+      },
       link: function(scope) {
         scope.state = $state;
+
+        scope.toggleLhp = function() {
+          scope.hideLhp = !scope.hideLhp;
+        };
       }
     };
   }

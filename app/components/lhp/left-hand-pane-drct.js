@@ -6,7 +6,9 @@
       controller: 'leftHandPaneCtrl',
       controllerAs: 'ctrl',
       bindToController: true,
-      scope: {},
+      scope: {
+        hideLhp: '='
+      },
     };
   }
 

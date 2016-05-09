@@ -26,7 +26,12 @@ body {
 #breadcrumbs {
   @extend .text-alignment;
   background-color: $darkest-gray-color;
+  min-height: $tab-height;
   height: $tab-height;
+}
+
+#app-rhp {
+  width: 70%;
 }
 
 #app-view-header {
@@ -34,13 +39,14 @@ body {
   background-color: $darkest-gray-color;
   color: white;
   height: $tab-height;
+  width: 100%;
   .route-text:first-letter {
     text-transform: uppercase;
   }
 }
 
 .full-width {
-    width: 100%;
+    width: 100% !important;
 }
 
 .full-height {
@@ -92,7 +98,7 @@ body {
     }
 }
 
-.lhp {
+#lhp {
   background-color: $dark-gray-color;
   color: $light-gray-color;
   display: flex;
@@ -100,6 +106,11 @@ body {
   float: left;
   height:100%;
   width: 30%;
+}
+
+.collapsed {
+  width: 0% !important;
+  transition: all 1s;
 }
 
 .home-text {

@@ -1,0 +1,37 @@
+<div>
+  <div id="weather-container">
+    <div id="prompt" class="weather-row">Enter City/State</div>
+    <div class="weather-row">
+      <div class="input-title">City:</div>
+      <input ng-model="city" class="input-value" type="text">
+    </div>
+    <div class="weather-row">
+      <div class="input-title">State:</div>
+      <input ng-model="state" class="input-value" type="text">
+    </div>
+    <div class="weather-row">
+      <button ng-click="getWeatherData(city, state)">Go</button>
+    </div>
+  </div>
+  <div id="weather-results" ng-if="showWeatherData">
+    <div class="weather-row">
+      Current Weather: {{weatherData.currentWeather}}
+    </div>
+    <div class="weather-row">
+      Last Reading: {{weatherData.lastReading}}
+    </div>
+    <div class="weather-row">
+      Temperature: {{weatherData.temperature}} &#8457;
+    </div>
+    <div class="weather-row">
+      Humidity: {{weatherData.humidity}} %
+    </div>
+    <div class="weather-row">
+      Sunrise: {{weatherData.sunrise}}
+    </div>
+    <div class="weather-row">
+      Sunset: {{weatherData.sunset}}
+    </div>
+  </div>
+</div>
+
