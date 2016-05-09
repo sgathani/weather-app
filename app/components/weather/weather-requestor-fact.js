@@ -26,7 +26,7 @@
           units: weatherConstants.openWeatherFarheneitUnit,
           q: encodeURIComponent(query)
         }
-      })
+      });
     };
 
     svc._getQuery = function(city, state) {

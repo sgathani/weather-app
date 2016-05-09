@@ -37,7 +37,8 @@ module.exports = function(config) {
       'app/**/*.js',
       'tests/**/*.mock.js',
       'tests/**/*.spec.js',
-      'app/**/*.html'
+      'app/**/*.html',
+      {pattern: 'tests/mocks/*.json', watched: true, served: true, included: false}
     ],
 
 
@@ -82,4 +83,4 @@ module.exports = function(config) {
     // how many browser should be started simultaneous
     concurrency: Infinity
   })
-}
+};

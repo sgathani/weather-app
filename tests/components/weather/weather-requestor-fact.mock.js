@@ -1,12 +1,11 @@
 (function() {
-  function weatherRequestor($q) {
+  function weatherRequestor($q, weatherDataMock) {
     var svc = {};
 
-    svc.getCurrentWeather = $q.when({});
-    //TODO SG: Make it return mock weather data
+    svc.getCurrentWeather = $q.when(weatherDataMock.getData());
 
     return svc;
   }
 
-  angular.module('weatherApp.mocks.weatherRequestor', []).factory('weatherRequestor', weatherRequestor);
+  angular.module('weatherApp.mocks.weatherRequestor', ['weatherApp.mocks.weatherDataMock']).factory('weatherRequestor', weatherRequestor);
 }());

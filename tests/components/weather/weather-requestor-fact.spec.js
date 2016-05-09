@@ -1,6 +1,7 @@
 describe('Service: weatherRequestor', function() {
   beforeEach(module(
-    'weatherApp'
+    'weatherApp',
+    'weatherApp.mocks.weatherDataMock'
   ));
 
   var systemUnderTest,
@@ -8,31 +9,16 @@ describe('Service: weatherRequestor', function() {
     $rootScope,
     $q,
     weatherConstants,
-    validateUrl;
+    validateUrl,
+    weatherData;
 
-  var weatherData = {
-    coord: {},
-    sys: {
-      sunrise: 1462786830,
-      sunset : 1462838396
-    },
-    weather: [{
-      description: 'Sky is Clear',
-    }],
-    main: {
-      temp: 53.33,
-      humidity: 34,
-    },
-    dt: 1462759854,
-    name: 'Norwalk'
-  };
-
-  beforeEach(inject(function(_$q_, _$httpBackend_, _$rootScope_, weatherRequestor, _weatherConstants_) {
+  beforeEach(inject(function(_$q_, _$httpBackend_, _$rootScope_, weatherRequestor, _weatherConstants_, weatherDataMock) {
     systemUnderTest = weatherRequestor;
     $q = _$q_;
     $httpBackend = _$httpBackend_;
     $rootScope = _$rootScope_;
     weatherConstants = _weatherConstants_;
+    weatherData = weatherDataMock.getData();
 
     validateUrl = function(url) {
       return url.indexOf(weatherConstants.openWeatherRequestUrl) >= 0 &&
