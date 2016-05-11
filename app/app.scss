@@ -127,6 +127,12 @@ body {
   justify-content: flex-end;
 }
 
+.weather-container-loading {
+  background: url(loading.gif) no-repeat center center;
+  height: 200px;
+  width: 200px;
+}
+
 #weather-container {
   color: $darkest-gray-color;
   #prompt {
@@ -136,7 +142,7 @@ body {
   .weather-row {
     clear: both;
     min-height: 40px;
-    width: 240px;
+    width: 300px;
     .input-title {
       float: left;
       width: 33%;

@@ -3,7 +3,7 @@
     return {
       restrict: 'E',
       templateUrl: 'components/weather/weather-data.html',
-      controller: 'weatherCtrl',
+      controller: 'weatherDataCtrl',
       controllerAs: 'ctrl',
       bindToController: true,
       scope: {},

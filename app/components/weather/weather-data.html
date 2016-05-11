@@ -6,13 +6,16 @@
       <input ng-model="city" class="input-value" type="text">
     </div>
     <div class="weather-row">
-      <div class="input-title">State:</div>
+      <div class="input-title">Stafe:</div>
       <input ng-model="state" class="input-value" type="text">
     </div>
     <div class="weather-row">
-      <button ng-click="getWeatherData(city, state)">Go</button>
+      <button ng-click="getWeatherData(city, state)"
+              ng-disabled="fetchInProgress">Go
+      </button>
     </div>
   </div>
+  <div ng-if="fetchInProgress" class="weather-container-loading"></div>
   <div id="weather-results" ng-if="showWeatherData">
     <div class="weather-row">
       Current Weather: {{weatherData.currentWeather}}
@@ -34,4 +37,3 @@
     </div>
   </div>
 </div>
-

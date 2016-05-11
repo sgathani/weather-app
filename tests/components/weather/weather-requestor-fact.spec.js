@@ -111,6 +111,13 @@ describe('Service: weatherRequestor', function() {
   });
 
   describe('_getFormattedResponse', function() {
+    it('should reject the response if it has the cod key that signals an error', function() {
+      var errorResponse = {data: {cod: '404'}};
+      spyOn($q, 'reject');
+      systemUnderTest._getFormattedResponse(errorResponse);
+      expect($q.reject).toHaveBeenCalledWith(errorResponse.data);
+    });
+
     it('should return weather data in the expected format', function() {
       expect(systemUnderTest._getFormattedResponse({data: weatherData})).toEqual({
         currentWeather: weatherData.weather[0].description,

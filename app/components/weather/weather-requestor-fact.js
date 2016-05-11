@@ -8,6 +8,7 @@
    * This factory is respon_sible for sending a request to the OpenWeatherMap
    */
   function weatherRequestor($q, $http, weatherConstants) {
+    var ERROR_CODE = 'cod';
     var svc = {};
 
     svc.getCurrentWeather = function(city, state) {
@@ -45,6 +46,10 @@
 
     svc._getFormattedResponse = function(response) {
       response = response.data;
+      if (response.hasOwnProperty(ERROR_CODE) && response[ERROR_CODE] !== 200) {
+        return $q.reject(response);
+      }
+
       return {
         currentWeather: response.weather[0].description,
         lastReading: moment(new Date(response.dt * 1000)).format('LL'),

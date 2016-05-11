@@ -10,6 +10,6 @@ angular.module('weatherApp', ['ui.router'])
             .state('weather', {
                 url: '/weather',
                 templateUrl: 'components/weather/weather.html',
-                controller: 'weatherCtrl'
+                controller: 'weatherDataCtrl'
             });
     }]);

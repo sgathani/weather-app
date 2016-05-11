@@ -17,5 +17,8 @@
     "foundation": {
       "main": "js/foundation.js"
     }
+  },
+  "resolutions": {
+    "angular": "1.5.0"
   }
 }

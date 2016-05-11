@@ -2,7 +2,9 @@
   function weatherRequestor($q, weatherDataMock) {
     var svc = {};
 
-    svc.getCurrentWeather = $q.when(weatherDataMock.getData());
+    svc.getCurrentWeather = function() {
+      return $q.when(weatherDataMock.getData());
+    };
 
     return svc;
   }
