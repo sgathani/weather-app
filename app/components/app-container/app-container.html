@@ -1,0 +1,13 @@
+<div class="full-height full-width" style="top:0px; bottom:0px; position:absolute;">
+  <breadcrumbs></breadcrumbs>
+  <div id="app-container" class="full-width" style="height:90%;" ng-init="hideLhp = false">
+    <left-hand-pane ng-show="!hideLhp" hide-lhp="hideLhp" ></left-hand-pane>
+    <div ng-class="{'full-width': hideLhp}" id="app-rhp" class="full-height float-left">
+      <content-header hide-lhp="hideLhp"></content-header>
+      <div id="app-view-container" class="full-width gray-border" style="height:80%;" ui-view></div>
+      <div id="app-view-footer" class="full-width gray-border" style="height:10%;">
+        <h3>This is the view footer</h3>
+      </div>
+    </div>
+  </div>
+</div>

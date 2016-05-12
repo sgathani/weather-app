@@ -26,8 +26,21 @@ body {
 #breadcrumbs {
   @extend .text-alignment;
   background-color: $darkest-gray-color;
+  color: $dark-gray-color;
   min-height: $tab-height;
   height: $tab-height;
+  width: 100%;
+  a {
+    color: $light-gray-color;
+    float: left;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-decoration: none;
+  }
+  .separator {
+    float: left;
+    font-weight: bold;
+  }
 }
 
 #app-rhp {

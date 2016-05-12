@@ -8,7 +8,7 @@
       },
       link: function(scope) {
         scope.goToRoute = function(routeName) {
-          $state.go(routeName.toLowerCase());
+          $state.go('base.' + routeName.toLowerCase());
         };
       }
     };

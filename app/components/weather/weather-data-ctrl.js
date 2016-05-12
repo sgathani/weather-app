@@ -4,6 +4,7 @@
     $scope.state = 'ct';
     $scope.fetchInProgress = false;
     $scope.showWeatherData = false;
+
     $scope.getWeatherData = function(city, state) {
       $scope.fetchInProgress = true;
       $scope.showWeatherData = false;
@@ -45,7 +46,7 @@
     $scope.containsOnlyLetters = function(value) {
       var letterOnlyMatch = /^[A-Za-z\s]+$/g;
       return letterOnlyMatch.test(value);
-    }
+    };
   }
 
   angular.module('weatherApp').controller('weatherDataCtrl', weatherDataCtrl);

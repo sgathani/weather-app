@@ -1,0 +1,6 @@
+<div id="breadcrumbs">
+  <div ng-repeat="crumb in breadcrumbs track by crumb.title">
+    <a ui-sref="{{crumb.stateName}}">{{crumb.title}}</a>
+    <div class="separator">/</div>
+  </div>
+</div>
