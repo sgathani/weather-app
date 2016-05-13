@@ -1,24 +1,16 @@
 (function() {
-  function lhpTabDrct($state) {
+  function lhpTabDrct() {
     return {
       restrict: 'E',
       templateUrl: 'components/lhp/lhp-tab.html',
+      controller: 'lhpTabCtrl',
+      controllerAs: 'ctrl',
+      bindToController: true,
       scope: {
-        title: '='  //TODO SG One way binding
-      },
-      link: function(scope) {
-        scope.goToRoute = function(routeName) {
-          $state.go('base.' + routeName.toLowerCase());
-        };
+        title: '<'
       }
     };
   }
 
   angular.module('weatherApp').directive('lhpTab', lhpTabDrct);
 }());
-
-/**
- * TODO: Remove tooltips on hover
- * One way binding
- * image compression/ sprites
- */

@@ -1,9 +1,9 @@
 (function() {
-  function breadcrumbsCtrl($scope, $rootScope, breadcrumbGenerator) {
+  function breadcrumbsCtrl($rootScope, breadcrumbGenerator) {
     var ctrl = this;
 
     ctrl._populateBreadcrumbs = function() {
-      $scope.breadcrumbs = breadcrumbGenerator.getBreadCrumbs();
+      ctrl.breadcrumbs = breadcrumbGenerator.getBreadcrumbs();
     };
     ctrl._populateBreadcrumbs();
 

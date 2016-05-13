@@ -16,6 +16,24 @@ body {
   font-size: larger;
 }
 
+#app-container {
+  bottom: 0px;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+}
+
+#app-content {
+  height: 95%;
+  width: 100%;
+}
+
+#app-rhp {
+  float: left;
+  height: 100%;
+}
+
 .text-alignment {
   align-items: center;
   color: $light-gray-color;
@@ -58,28 +76,21 @@ body {
   }
 }
 
-.full-width {
-    width: 100% !important;
+.hide-lhp-content-width {
+  width: 100% !important;
 }
 
-.full-height {
-    height: 100%;
+#app-views {
+  height: 80%;
+  width: 100%;
 }
 
-.float-left {
-    float: left;
-}
-
-.black {
-    background-color: black;
-}
-
-.gray {
-    background-color: $dark-gray-color;
-}
-
-.lightgray {
-    color: $light-gray-color;
+#app-footer {
+  border-top: 2px solid $light-gray-color;
+  color: $light-gray-color;
+  float: right;
+  height: 10%;
+  width: 100%;
 }
 
 .routetext {
@@ -141,7 +152,7 @@ body {
 }
 
 .weather-container-loading {
-  background: url(loadingcircle.gif) no-repeat center center;
+  background: url(images/loadingcircle.gif) no-repeat center center;
   height: 180px;
   width: 350px;
 }

@@ -36,33 +36,41 @@ describe('Service: weatherRequestor', function() {
   });
 
   describe('getCurrentWeather', function() {
-    it('should call sendRequest to get weather data', function() {
-      spyOn(systemUnderTest, 'sendRequest').and.returnValue($q.when({data: weatherData}));
-      systemUnderTest.getCurrentWeather('new york', 'ny');
-      expect(systemUnderTest.sendRequest).toHaveBeenCalledWith('new york,ny');
-    });
-
-    it('should call _getFormattedResponse on success', function() {
-      spyOn(systemUnderTest, '_getFormattedResponse');
-      systemUnderTest.getCurrentWeather('new york', 'ny');
-      $httpBackend.expectGET(validateUrl);
-      $httpBackend.flush();
-
-      expect(systemUnderTest._getFormattedResponse).toHaveBeenCalled();
-    });
-
-    it('should return weather data in the expected format to the consumer', function() {
-      systemUnderTest.getCurrentWeather('new york', 'ny').then(function(data) {
-        expect(data.currentWeather).toBeDefined();
-        expect(data.lastReading).toBeDefined();
-        expect(data.temperature).toBeDefined();
-        expect(data.humidity).toBeDefined();
-        expect(data.sunrise).toBeDefined();
-        expect(data.sunset).toBeDefined();
+    describe('general and success cases', function() {
+      beforeEach(function() {
+        spyOn(systemUnderTest, 'sendRequest').and.returnValue($q.when({data: weatherData}));
       });
 
-      $httpBackend.expectGET(validateUrl);
-      $httpBackend.flush();
+      it('should call _getQuery to build the search query', function() {
+        spyOn(systemUnderTest, '_getQuery');
+        systemUnderTest.getCurrentWeather('dublin', 'ca');
+
+        expect(systemUnderTest._getQuery).toHaveBeenCalledWith('dublin', 'ca');
+      });
+
+      it('should call sendRequest to get weather data', function() {
+        systemUnderTest.getCurrentWeather('new york', 'ny');
+        expect(systemUnderTest.sendRequest).toHaveBeenCalledWith('new york,ny');
+      });
+
+      it('should call _getFormattedResponse on success', function() {
+        spyOn(systemUnderTest, '_getFormattedResponse');
+        systemUnderTest.getCurrentWeather('new york', 'ny');
+        $rootScope.$digest();
+
+        expect(systemUnderTest._getFormattedResponse).toHaveBeenCalled();
+      });
+
+      it('should return weather data in the expected format to the consumer', function() {
+        systemUnderTest.getCurrentWeather('new york', 'ny').then(function(data) {
+          expect(data.currentWeather).toBeDefined();
+          expect(data.lastReading).toBeDefined();
+          expect(data.temperature).toBeDefined();
+          expect(data.humidity).toBeDefined();
+          expect(data.sunrise).toBeDefined();
+          expect(data.sunset).toBeDefined();
+        });
+      });
     });
 
     it('should reject the promise on error', function() {
@@ -92,8 +100,6 @@ describe('Service: weatherRequestor', function() {
       $httpBackend.expectGET(checkWeatherUnit);
       $httpBackend.flush();
     });
-
-    //TODO: check the other params as well
   });
 
   describe('_getQuery', function() {
@@ -111,11 +117,18 @@ describe('Service: weatherRequestor', function() {
   });
 
   describe('_getFormattedResponse', function() {
-    it('should reject the response if it has the cod key that signals an error', function() {
-      var errorResponse = {data: {cod: '404'}};
+    it('should reject the response code != 200 to signals an error', function() {
+      var errorResponse = {data: {cod: 404}};
       spyOn($q, 'reject');
       systemUnderTest._getFormattedResponse(errorResponse);
       expect($q.reject).toHaveBeenCalledWith(errorResponse.data);
+    });
+
+    it('should not reject the promise if the response code is 200', function() {
+      var response = {data: weatherData};
+      spyOn($q, 'reject');
+      systemUnderTest._getFormattedResponse(response);
+      expect($q.reject).not.toHaveBeenCalledWith(response.data);
     });
 
     it('should return weather data in the expected format', function() {

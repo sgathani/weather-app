@@ -4,6 +4,8 @@
       restrict: 'E',
       templateUrl: 'components/breadcrumbs/breadcrumbs.html',
       controller: 'breadcrumbsCtrl',
+      controllerAs: 'ctrl',
+      bindToController: true,
       scope: {},
     };
   }

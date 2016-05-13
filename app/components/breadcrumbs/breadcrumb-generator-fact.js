@@ -10,19 +10,19 @@
   function breadcrumbGenerator($state) {
     var svc = {};
 
-    svc.getBreadCrumbs = function() {
+    svc.getBreadcrumbs = function() {
       var currentState = $state.$current;
-      return svc.generateBreadCrumbsHelper(currentState, []);
+      return svc._generateBreadcrumbs(currentState, []);
     };
 
-    svc.generateBreadCrumbsHelper = function(currentState, routeList) {
+    svc._generateBreadcrumbs = function(currentState, routeList) {
       routeList.unshift({
         title: currentState.route.name,
         stateName: currentState.route.state || currentState.self.name
       });
 
       if (angular.isDefined(currentState.parent) && angular.isDefined(currentState.parent.route)) {
-        svc.generateBreadCrumbsHelper(currentState.parent, routeList);
+        svc._generateBreadcrumbs(currentState.parent, routeList);
       }
 
       return routeList;

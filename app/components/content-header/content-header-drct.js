@@ -1,17 +1,13 @@
 (function() {
-  function contentHeaderDrct($state) {
+  function contentHeaderDrct() {
     return {
       restrict: 'E',
       templateUrl: 'components/content-header/content-header.html',
+      controller: 'contentHeaderCtrl',
+      controllerAs: 'ctrl',
+      bindToController: true,
       scope: {
         hideLhp: '='
-      },
-      link: function(scope) {
-        scope.state = $state;
-
-        scope.toggleLhp = function() {
-          scope.hideLhp = !scope.hideLhp;
-        };
       }
     };
   }

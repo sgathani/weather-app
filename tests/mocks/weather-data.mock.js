@@ -4,6 +4,7 @@
 
     svc.getData = function() {
       return {
+        cod: 200,
         coord: {},
         sys: {
           sunrise: 1462786830,

@@ -5,7 +5,7 @@
    * @name weatherRequestor
    *
    * @description
-   * This factory is respon_sible for sending a request to the OpenWeatherMap
+   * This factory is responsible for sending a request to the OpenWeatherMap
    */
   function weatherRequestor($q, $http, weatherConstants) {
     var ERROR_CODE = 'cod';

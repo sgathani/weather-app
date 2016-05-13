@@ -1,52 +1,39 @@
 (function() {
-  function weatherDataCtrl($scope, weatherRequestor) {
-    $scope.city = 'norwalk';
-    $scope.state = 'ct';
-    $scope.fetchInProgress = false;
-    $scope.showWeatherData = false;
+  function weatherDataCtrl(weatherRequestor, weatherDataValidator) {
+    var ctrl = this;
+    ctrl.fetchInProgress = false;
+    ctrl.showWeatherData = false;
 
-    $scope.getWeatherData = function(city, state) {
-      $scope.fetchInProgress = true;
-      $scope.showWeatherData = false;
+    ctrl.getWeatherData = function(city, state) {
+      ctrl.fetchInProgress = true;
+      ctrl.showWeatherData = false;
+
       city = city ? city.trim() : city;
       state = state ? state.trim() : state;
 
-      if (!$scope.isInputValid(city, state)) {
+      if (!weatherDataValidator.isValid(city, state)) {
         return;
       }
 
-      return weatherRequestor.getCurrentWeather(city, state).then(function(weatherData) {
-        $scope.weatherData = weatherData;
-        $scope.showWeatherData = true;
-      }, function(error) {
-        if (error.hasOwnProperty('message')) {
-          alert(error.message);
-        } else {
-          alert('There was an error requesting the data.');
-        }
-      }).finally(function() {
-        $scope.fetchInProgress = false;
-      });
+      return weatherRequestor.getCurrentWeather(city, state)
+        .then(weatherFetchSuccess, weatherFetchError)
+        .finally(function() {
+          ctrl.fetchInProgress = false;
+        });
     };
 
-    $scope.isInputValid = function(city, state) {
-      if(!city.trim() && !state.trim()) {
-        alert('Please enter a city or state.');
-        return false;
+    function weatherFetchSuccess(weatherData) {
+      ctrl.weatherData = weatherData;
+      ctrl.showWeatherData = true;
+    }
+
+    function weatherFetchError(error) {
+      if (error.hasOwnProperty('message')) {
+        alert(error.message);
+      } else {
+        alert('There was an error requesting the data.');
       }
-
-      if((city && !$scope.containsOnlyLetters(city)) || (state && !$scope.containsOnlyLetters(state))) {
-        alert('Input values cannot contain numbers or special characters.');
-        return false;
-      }
-
-      return true;
-    };
-
-    $scope.containsOnlyLetters = function(value) {
-      var letterOnlyMatch = /^[A-Za-z\s]+$/g;
-      return letterOnlyMatch.test(value);
-    };
+    }
   }
 
   angular.module('weatherApp').controller('weatherDataCtrl', weatherDataCtrl);

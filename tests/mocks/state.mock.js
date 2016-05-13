@@ -4,7 +4,25 @@
       params: {},
       go: angular.noop,
       current: {
-        name: 'weather'
+        name: 'weather',
+      },
+      $current: {
+        name: 'weather',
+        self: {
+          name: 'weather'
+        },
+        route: {
+          name: 'weather',
+        },
+        parent: {
+          self: {
+            name: 'weatherParent'
+          },
+          route: {
+            name: 'weatherParent',
+            state: 'default.home'
+          }
+        }
       }
     };
   }

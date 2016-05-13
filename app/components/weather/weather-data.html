@@ -3,37 +3,37 @@
     <div id="prompt" class="weather-row">Enter City/State</div>
     <div class="weather-row">
       <div class="input-title">City:</div>
-      <input ng-model="city" class="input-value" type="text">
+      <input ng-model="ctrl.city" class="input-value" type="text">
     </div>
     <div class="weather-row">
       <div class="input-title">State:</div>
-      <input ng-model="state" class="input-value" type="text">
+      <input ng-model="ctrl.state" class="input-value" type="text">
     </div>
     <div class="weather-row">
-      <button ng-click="getWeatherData(city, state)"
-              ng-disabled="fetchInProgress">Go
+      <button ng-click="ctrl.getWeatherData(ctrl.city, ctrl.state)"
+              ng-disabled="ctrl.fetchInProgress">Go
       </button>
     </div>
   </div>
-  <div ng-if="fetchInProgress" class="weather-container-loading"></div>
-  <div id="weather-results" ng-if="showWeatherData">
+  <div ng-if="ctrl.fetchInProgress" class="weather-container-loading"></div>
+  <div id="weather-results" ng-if="ctrl.showWeatherData">
     <div class="weather-row">
-      Current Weather: {{weatherData.currentWeather}}
+      Current Weather: {{ctrl.weatherData.currentWeather}}
     </div>
     <div class="weather-row">
-      Last Reading: {{weatherData.lastReading}}
+      Last Reading: {{ctrl.weatherData.lastReading}}
     </div>
     <div class="weather-row">
-      Temperature: {{weatherData.temperature}} &#8457;
+      Temperature: {{ctrl.weatherData.temperature}} &#8457;
     </div>
     <div class="weather-row">
-      Humidity: {{weatherData.humidity}} %
+      Humidity: {{ctrl.weatherData.humidity}} %
     </div>
     <div class="weather-row">
-      Sunrise: {{weatherData.sunrise}}
+      Sunrise: {{ctrl.weatherData.sunrise}}
     </div>
     <div class="weather-row">
-      Sunset: {{weatherData.sunset}}
+      Sunset: {{ctrl.weatherData.sunset}}
     </div>
   </div>
 </div>

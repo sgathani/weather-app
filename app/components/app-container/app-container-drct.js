@@ -3,6 +3,7 @@
     return {
       restrict: 'E',
       templateUrl: 'components/app-container/app-container.html',
+      scope: {}
     };
   }
 
