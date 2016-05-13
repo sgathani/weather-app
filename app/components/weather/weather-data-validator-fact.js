@@ -3,7 +3,7 @@
     var svc = {};
 
     svc.isValid = function(city, state) {
-      if(!city.trim() && !state.trim()) {
+      if((!city || !city.trim()) && (!state || !state.trim())) {
         alert('Please enter a city or state.');
         return false;
       }

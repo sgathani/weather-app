@@ -5,7 +5,6 @@
     ctrl.showWeatherData = false;
 
     ctrl.getWeatherData = function(city, state) {
-      ctrl.fetchInProgress = true;
       ctrl.showWeatherData = false;
 
       city = city ? city.trim() : city;
@@ -15,6 +14,7 @@
         return;
       }
 
+      ctrl.fetchInProgress = true;
       return weatherRequestor.getCurrentWeather(city, state)
         .then(weatherFetchSuccess, weatherFetchError)
         .finally(function() {
